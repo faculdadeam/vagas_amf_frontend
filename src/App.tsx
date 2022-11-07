@@ -1,12 +1,14 @@
 import { initConfig } from "./configs/init_configs";
+import AppRoutes from "./routes";
+import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
   initConfig();
 
   return (
-    <div className="App">
-      <h1>Hello World</h1>
-    </div>
+    <Router>
+      <AppRoutes />
+    </Router>
   );
 }
 
