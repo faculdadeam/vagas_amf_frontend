@@ -7,9 +7,12 @@ import Button from "@mui/material/Button";
 import logo from "../../assets/logo.png";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import { useNavigate } from "react-router-dom";
+import { auth } from "../../hooks/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const Appbar: React.FC<any> = () => {
   const navigate = useNavigate();
+  const [user, loading, error] = useAuthState(auth);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -28,17 +31,21 @@ const Appbar: React.FC<any> = () => {
           </Typography>
         </Toolbar>
         <Toolbar sx={{ flexDirection: "row" }}>
-          <Button
-            style={{ color: "#2A5EE4", fontSize: 16, fontWeight: 400 }}
-            color="inherit"
-            onClick={() => navigate("/")}
-          >
-            Entrar
-          </Button>
+          {user ? (
+            <></>
+          ) : (
+            <Button
+              style={{ color: "#2A5EE4", fontSize: 16, fontWeight: 400 }}
+              color="inherit"
+              onClick={() => navigate("/")}
+            >
+              Entrar
+            </Button>
+          )}
           <AccountCircleOutlinedIcon style={{ fill: "#2A5EE4" }} />
         </Toolbar>
       </AppBar>
-    </Box>
+    </Box >
   );
 };
 
