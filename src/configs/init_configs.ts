@@ -2,7 +2,9 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 
 const initConfig = () => {
-    initFirebase();
+    const app = initFirebase();
+
+    return app;
 }
 
 const initFirebase = () => {
@@ -20,6 +22,8 @@ const initFirebase = () => {
     if (process.env.NODE_ENV === 'production') {
         getAnalytics(app);
     }
+
+    return app
 }
 
 export { initConfig };

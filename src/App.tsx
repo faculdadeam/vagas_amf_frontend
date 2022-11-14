@@ -1,11 +1,15 @@
 import { initConfig } from "./configs/init_configs";
-import Home from "./pages/Home";
+import AppRoutes from "./routes";
+import { BrowserRouter as Router } from "react-router-dom";
+
 
 function App() {
   initConfig();
 
   return (
-      <Home/>
+    <Router>
+      <AppRoutes />
+    </Router>
   );
 }
 

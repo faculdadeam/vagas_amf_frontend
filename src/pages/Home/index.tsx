@@ -1,5 +1,6 @@
 import React from "react";
-import Title from "../../components/Title";
+import Title from "../../components/Title"; 
+import { auth } from "../../hooks/auth";
 import Appbar from "../../components/AppBar";
 
 const Home: React.FC = () => {
@@ -7,6 +8,7 @@ const Home: React.FC = () => {
     <div>
       <Appbar/>
       <Title>Home</Title>
+      <button onClick={() => auth.signOut()}>Sign out</button>
     </div>
   );
 }
