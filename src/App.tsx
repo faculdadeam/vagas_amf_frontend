@@ -1,12 +1,11 @@
 import { initConfig } from "./configs/init_configs";
+import Home from "./pages/Home";
 
 function App() {
   initConfig();
 
   return (
-    <div className="App">
-      <h1>Hello World</h1>
-    </div>
+      <Home/>
   );
 }
 
