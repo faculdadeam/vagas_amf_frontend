@@ -9,6 +9,7 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../hooks/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { ExitToApp } from "@mui/icons-material";
 
 const Appbar: React.FC<any> = () => {
   const navigate = useNavigate();
@@ -32,17 +33,24 @@ const Appbar: React.FC<any> = () => {
         </Toolbar>
         <Toolbar sx={{ flexDirection: "row" }}>
           {user ? (
-            <></>
+            <Button
+              style={{ color: "#2A5EE4", fontSize: 16, fontWeight: 400, textTransform: "none" }}
+              color="inherit"
+              onClick={() => auth.signOut()}
+            >
+              Sair
+              <ExitToApp style={{ fill: "#2A5EE4", marginLeft: 8 }} />
+            </Button>
           ) : (
             <Button
-              style={{ color: "#2A5EE4", fontSize: 16, fontWeight: 400 }}
+              style={{ color: "#2A5EE4", fontSize: 16, fontWeight: 400, textTransform: "none" }}
               color="inherit"
               onClick={() => navigate("/")}
             >
               Entrar
+              <AccountCircleOutlinedIcon style={{ fill: "#2A5EE4", marginLeft: 8 }} />
             </Button>
           )}
-          <AccountCircleOutlinedIcon style={{ fill: "#2A5EE4" }} />
         </Toolbar>
       </AppBar>
     </Box >
