@@ -1,6 +1,7 @@
 import { initConfig } from "./configs/init_configs";
 import AppRoutes from "./routes";
 import { BrowserRouter as Router } from "react-router-dom";
+import Appbar from "./components/AppBar";
 
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
 
   return (
     <Router>
+      <Appbar />
       <AppRoutes />
     </Router>
   );
