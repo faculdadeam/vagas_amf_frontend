@@ -7,7 +7,6 @@ const UserRoute = () => {
   const [user, loading, error] = useAuthState(auth);
 
   if (loading) return <CircularProgress />;
-  console.log(user);
 
   return user ? (
     <Outlet />
