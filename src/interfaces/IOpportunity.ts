@@ -1,4 +1,4 @@
-interface IContact {
+export interface IContact {
     type: string;
     value: string;
 }
@@ -12,7 +12,7 @@ export default interface IOpportunity {
     company: string;
     contractType: string; // clt, estagio...
     courses: string[];
-    salary: string;
+    salary: number[];
     workplaceType: string; // remoto, presencial...
     validUntil: Date;
     image: string;
