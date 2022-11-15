@@ -21,7 +21,11 @@ const Home: React.FC = () => {
       {opportunities.map((opportunity) => (
         <Card key={opportunity.id}>
           <CardContent>
-            <h1>{opportunity.name}</h1>
+            <h1>{opportunity.company}</h1>
+            <h3>{opportunity.name}</h3>
+            <p>{opportunity.description}</p>
+            <p>{opportunity.workplaceType}</p>
+            <p>{new Date(opportunity.validUntil).getDay()}/{new Date(opportunity.validUntil).getMonth()}/{new Date(opportunity.validUntil).getFullYear()}</p>
           </CardContent>
         </Card>
       ))}
