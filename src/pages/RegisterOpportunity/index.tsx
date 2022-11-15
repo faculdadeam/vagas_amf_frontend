@@ -336,6 +336,7 @@ const RegisterOpportunity: React.FC = () => {
             <Button
               variant="text"
               sx={{ borderRadius: 25, color: Colors.primary }}
+              onClick={() => navigate('/')}
             >
               Cancelar
             </Button>
