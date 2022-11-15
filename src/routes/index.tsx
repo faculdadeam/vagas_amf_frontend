@@ -1,12 +1,16 @@
-import { Routes, Route } from "react-router-dom"
-import Home from "../pages/Home"
+import { Routes, Route } from "react-router-dom";
+import Home from "../pages/Home";
+import RegisterOpportunity from "../pages/RegisterOpportunity";
 
 const AppRoutes: React.FC = () => {
   return (
     <Routes>
-      <Route index path="/" element={<Home />} />
+      <Route path="/">
+        <Route index element={<Home />} />
+        <Route path="/register-opportunity" element={<RegisterOpportunity />} />
+      </Route>
     </Routes>
   );
-}
+};
 
 export default AppRoutes;
