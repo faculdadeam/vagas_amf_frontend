@@ -30,7 +30,11 @@ const Home: React.FC = () => {
       </Button>
 
       {opportunities.map((opportunity) => (
-        <Card key={opportunity.id}>
+        <Card key={opportunity.id} onClick={() => navigate("/register-opportunity", {
+          state: {
+            opportunity
+          }
+        })}>
           <CardContent>
             <h1>{opportunity.company}</h1>
             <h3>{opportunity.name}</h3>

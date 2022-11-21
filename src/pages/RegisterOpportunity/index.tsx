@@ -15,13 +15,13 @@ import {
 } from "@mui/material";
 import { Dayjs } from "dayjs";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ChipSelect from "../../components/ChipSelect";
 import DatePickerCustom from "../../components/DatePickerCustom";
 import { createOpportunity } from "../../hooks/opportunities";
 import IOpportunity, { IContact } from "../../interfaces/IOpportunity";
 import { Colors } from "../../utils/colors";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import ErrorText from "../../components/ErrorText";
 import { customResolver } from "../../utils/customResolver";
@@ -74,6 +74,28 @@ const RegisterOpportunity: React.FC = () => {
   const [date, setDate] = React.useState<Dayjs | null>(null);
 
   const [courses, setCourses] = React.useState<string[]>([]);
+
+  const location = useLocation();
+
+  const getFromContacts = (contactType: string) => {
+    return opportunityData.contacts.filter(contact => contact.type === contactType)[0].value || "";
+  };
+
+  useEffect(() => {
+    if (location.state) {
+      const opportunity = location.state.opportunity as IOpportunity;
+      setOpportunityData(opportunity);
+
+      setHiringMethod(opportunity.contractType);
+      setWorkMethod(opportunity.workplaceType);
+      setSalary([opportunity.salary[0], opportunity.salary[1]]);
+      setSalaryDisabled(false);
+      setCourses(opportunity.courses);
+
+      console.log(opportunity);
+
+    }
+  }, [location]);
 
   const {
     register,
