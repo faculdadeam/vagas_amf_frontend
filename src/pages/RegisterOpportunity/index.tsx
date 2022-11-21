@@ -22,6 +22,9 @@ import { createOpportunity } from "../../hooks/opportunities";
 import IOpportunity, { IContact } from "../../interfaces/IOpportunity";
 import { Colors } from "../../utils/colors";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import ErrorText from "../../components/ErrorText";
+import { customResolver } from "../../utils/customResolver";
 
 const coursesNames = [
   "Sistemas de Informação",
@@ -71,6 +74,12 @@ const RegisterOpportunity: React.FC = () => {
   const [date, setDate] = React.useState<Dayjs | null>(null);
 
   const [courses, setCourses] = React.useState<string[]>([]);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IOpportunity>({ resolver: customResolver });
 
   const navigate = useNavigate();
 
@@ -161,18 +170,22 @@ const RegisterOpportunity: React.FC = () => {
             variant="outlined"
             label="Título da vaga"
             fullWidth
+            {...register("name")}
             onChange={(e) =>
               handleChangeOpportunityData("name", e.target.value)
             }
           ></TextField>
+          {errors?.name && <ErrorText>{errors.name.message}</ErrorText>}
           <TextField
             variant="outlined"
             label="Nome da empresa"
             fullWidth
+            {...register("company")}
             onChange={(e) =>
               handleChangeOpportunityData("company", e.target.value)
             }
           ></TextField>
+          {errors?.company && <ErrorText>{errors.company.message}</ErrorText>}
 
           <Container
             disableGutters
@@ -183,10 +196,14 @@ const RegisterOpportunity: React.FC = () => {
               variant="outlined"
               label="Telefone"
               fullWidth
+              {...register("contacts")}
               onChange={(e) =>
                 handleContacts({ type: "Phone", value: e.target.value })
               }
             ></TextField>
+            {errors?.contacts && (
+              <ErrorText>{errors?.contacts.message}</ErrorText>
+            )}
             <TextField
               variant="outlined"
               label="Celular"
@@ -204,6 +221,7 @@ const RegisterOpportunity: React.FC = () => {
               handleContacts({ type: "Email", value: e.target.value })
             }
           ></TextField>
+          {errors?.contacts && <ErrorText>{errors.contacts.message}</ErrorText>}
           <Container
             disableGutters
             maxWidth={false}
@@ -336,14 +354,14 @@ const RegisterOpportunity: React.FC = () => {
             <Button
               variant="text"
               sx={{ borderRadius: 25, color: Colors.primary }}
-              onClick={() => navigate('/')}
+              onClick={() => navigate("/")}
             >
               Cancelar
             </Button>
             <Button
               variant="contained"
               sx={{ borderRadius: 25, backgroundColor: Colors.primary }}
-              onClick={() => saveOpportunity()}
+              onClick={handleSubmit(saveOpportunity)}
             >
               Salvar vaga
             </Button>
