@@ -15,6 +15,7 @@ import Title from "../../components/Title";
 import { getOpportunities } from "../../hooks/opportunities";
 import IOpportunity from "../../interfaces/IOpportunity";
 import { Colors } from "../../utils/colors";
+import SeeMore from "../../components/SeeMore";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
 import EditIcon from "@mui/icons-material/Edit";
