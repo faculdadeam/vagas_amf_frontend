@@ -1,10 +1,11 @@
 {
   "files": {
-    "main.js": "/vagas_amf_frontend/static/js/main.44314a62.js",
+    "main.js": "/vagas_amf_frontend/static/js/main.cc9e95f2.js",
+    "static/media/logo.png": "/vagas_amf_frontend/static/media/logo.8539acf576897caf3239.png",
     "index.html": "/vagas_amf_frontend/index.html",
-    "main.44314a62.js.map": "/vagas_amf_frontend/static/js/main.44314a62.js.map"
+    "main.cc9e95f2.js.map": "/vagas_amf_frontend/static/js/main.cc9e95f2.js.map"
   },
   "entrypoints": [
-    "static/js/main.44314a62.js"
+    "static/js/main.cc9e95f2.js"
   ]
 }
