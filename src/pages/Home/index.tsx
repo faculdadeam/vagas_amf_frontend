@@ -5,6 +5,7 @@ import Title from "../../components/Title";
 import { getOpportunities } from "../../hooks/opportunities";
 import IOpportunity from "../../interfaces/IOpportunity";
 import { Colors } from "../../utils/colors";
+import SeeMore from "../../components/SeeMore";
 
 const Home: React.FC = () => {
   const [opportunities, setOpportunities] = useState<IOpportunity[]>([]);
