@@ -6,6 +6,7 @@ import Fade from "@mui/material/Fade";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
+import IOpportunity from "../../interfaces/IOpportunity";
 
 const style = {
   position: "absolute" as "absolute",
@@ -21,7 +22,7 @@ const style = {
   overflow: "auto",
 };
 
-const SeeMore: React.FC<any> = () => {
+const SeeMore:  React.FC<IOpportunity> = (props: IOpportunity) =>  {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -46,28 +47,19 @@ const SeeMore: React.FC<any> = () => {
               id="transition-modal-title"
               style={{ fontSize: 22, fontWeight: 400 }}
             >
-              Nome da Empresa
+              {props.company}
             </Typography>
             <Typography
               id="transition-modal-description"
               style={{ fontSize: 18, fontWeight: 400 }}
             >
-              Nome da vaga
+              {props.name}
             </Typography>
             <Box sx={{ border: 1, mt: 3, padding: 2, color: "#666666" }}>
               <Typography
                 style={{ fontSize: 18, fontWeight: 400, color: "#666666" }}
               >
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book. It has
-                survived not only five centuries, but also the leap into
-                electronic typesetting, remaining essentially unchanged. It was
-                popularised in the 1960s with the release of Letraset sheets
-                containing Lorem Ipsum passages, and more recently with desktop
-                publishing software like Aldus PageMaker including versions of
-                Lorem Ipsum
+                {props.description}
               </Typography>
             </Box>
             <Typography
