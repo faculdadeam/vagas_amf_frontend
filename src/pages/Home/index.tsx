@@ -8,6 +8,7 @@ import { Colors } from "../../utils/colors";
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import QueryBuilderIcon from '@mui/icons-material/QueryBuilder';
 import EditIcon from '@mui/icons-material/Edit';
+import AddIcon from '@mui/icons-material/Add';
 
 const Home: React.FC = () => {
   const [opportunities, setOpportunities] = useState<IOpportunity[]>([]);
@@ -33,34 +34,36 @@ const Home: React.FC = () => {
           alignItems: "center",
           width: "80%",
           paddingTop: "20px",
+          paddingBottom: "50px",
         }}
       >
+        <Button
+          variant="contained"
+          sx={{ borderRadius: 25, backgroundColor: "#2A5EE4", marginTop: "20px", marginBottom: "30px", alignSelf: "flex-end" }}
+          onClick={() => navigate('/register-opportunity')}
+        >
+          <AddIcon sx={{ marginRight: "10px" }} />
+          Adicionar vaga
+        </Button>
+
         <Typography
           variant="h4"
-          sx={{ fontWeight: "bold", fontFamily: "Poppins", fontSize: 24 }}
+          sx={{ fontWeight: "bold", fontFamily: "Poppins", fontSize: 24, color: "#424242" }}
         >
           Vagas Disponíveis
         </Typography>
 
-        <Button
-          variant="contained"
-          sx={{ borderRadius: 25, backgroundColor: Colors.primary, marginTop: "20px", marginBottom: "20px" }}
-          onClick={() => navigate('/register-opportunity')}
-        >
-          Adicionar vaga
-        </Button>
 
         {opportunities.map((opportunity) => (
           <Card
             key={opportunity.id}
             sx={{
-              marginTop: "20px",
+              marginTop: "30px",
               display: "flex",
               flexDirection: "column",
               alignItems: "flex-start",
-              padding: "20px",
+              padding: "30px",
               width: "768px",
-              height: "243px",
               background: "#FFFFFF",
               borderRadius: "4px"
             }}
