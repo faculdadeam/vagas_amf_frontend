@@ -13,7 +13,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { Dayjs } from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 
 import React, { useEffect, useState } from "react";
 import ChipSelect from "../../components/ChipSelect";
@@ -78,7 +78,15 @@ const RegisterOpportunity: React.FC = () => {
   const location = useLocation();
 
   const getFromContacts = (contactType: string) => {
-    return opportunityData.contacts.filter(contact => contact.type === contactType)[0].value || "";
+    if (opportunityData.contacts.length === 0) {
+      return "";
+    }
+
+    return (
+      opportunityData.contacts.filter(
+        (contact) => contact.type === contactType
+      )[0].value || ""
+    );
   };
 
   useEffect(() => {
@@ -91,9 +99,7 @@ const RegisterOpportunity: React.FC = () => {
       setSalary([opportunity.salary[0], opportunity.salary[1]]);
       setSalaryDisabled(false);
       setCourses(opportunity.courses);
-
-      console.log(opportunity);
-
+      setDate(dayjs(opportunity.validUntil));
     }
   }, [location]);
 
@@ -107,13 +113,13 @@ const RegisterOpportunity: React.FC = () => {
 
   const handleChangeOpportunityData = (type: string, data: any) => {
     let newOpportunityData = opportunityData;
+
     Object.keys(newOpportunityData).forEach((key) => {
       if (key === type) {
         newOpportunityData[key as keyof typeof opportunityData] = data;
       }
     });
     setOpportunityData(newOpportunityData);
-    console.log(opportunityData);
   };
 
   const handleContacts = (data: IContact) => {
@@ -130,7 +136,6 @@ const RegisterOpportunity: React.FC = () => {
     if (!checkExists) {
       newOpportunityData.contacts.push(data);
     }
-    console.log(newOpportunityData);
 
     setOpportunityData(newOpportunityData);
   };
@@ -196,6 +201,7 @@ const RegisterOpportunity: React.FC = () => {
             onChange={(e) =>
               handleChangeOpportunityData("name", e.target.value)
             }
+            value={opportunityData.name}
           ></TextField>
           {errors?.name && <ErrorText>{errors.name.message}</ErrorText>}
           <TextField
@@ -206,6 +212,7 @@ const RegisterOpportunity: React.FC = () => {
             onChange={(e) =>
               handleChangeOpportunityData("company", e.target.value)
             }
+            value={opportunityData.company}
           ></TextField>
           {errors?.company && <ErrorText>{errors.company.message}</ErrorText>}
 
@@ -222,6 +229,7 @@ const RegisterOpportunity: React.FC = () => {
               onChange={(e) =>
                 handleContacts({ type: "Phone", value: e.target.value })
               }
+              value={getFromContacts("Phone")}
             ></TextField>
             {errors?.contacts && (
               <ErrorText>{errors?.contacts.message}</ErrorText>
@@ -233,6 +241,7 @@ const RegisterOpportunity: React.FC = () => {
               onChange={(e) =>
                 handleContacts({ type: "Cellphone", value: e.target.value })
               }
+              value={getFromContacts("Cellphone")}
             ></TextField>
           </Container>
           <TextField
@@ -242,6 +251,7 @@ const RegisterOpportunity: React.FC = () => {
             onChange={(e) =>
               handleContacts({ type: "Email", value: e.target.value })
             }
+            value={getFromContacts("Email")}
           ></TextField>
           {errors?.contacts && <ErrorText>{errors.contacts.message}</ErrorText>}
           <Container
@@ -362,6 +372,7 @@ const RegisterOpportunity: React.FC = () => {
             onChange={(e) =>
               handleChangeOpportunityData("description", e.target.value)
             }
+            value={opportunityData.description}
           ></TextField>
           <Container
             disableGutters
