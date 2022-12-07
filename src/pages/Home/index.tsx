@@ -22,6 +22,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import AddIcon from "@mui/icons-material/Add";
 import Dialog from "@mui/material/Dialog";
 import { ContentCopy } from "@mui/icons-material";
+import SeeMore from "../../components/SeeMore";
 
 const Home: React.FC = () => {
   const [opportunities, setOpportunities] = useState<IOpportunity[]>([]);
