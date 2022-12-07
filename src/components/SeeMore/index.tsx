@@ -72,28 +72,28 @@ const SeeMore:  React.FC<IOpportunity> = (props: IOpportunity) =>  {
               <Typography
                 style={{ fontSize: 18, fontWeight: 400, color: "#666666" }}
               >
-                Curso (Sistemas de Informação, Adm)
+                {props.courses}
               </Typography>
             </Box>
             <Box sx={{ border: 1, mt: 1, padding: 2, color: "#666666" }}>
               <Typography
                 style={{ fontSize: 18, fontWeight: 400, color: "#666666" }}
               >
-                Forma de contratação ....
+                {props.contractType}
               </Typography>
             </Box>
             <Box sx={{ border: 1, mt: 1, padding: 2, color: "#666666" }}>
               <Typography
                 style={{ fontSize: 18, fontWeight: 400, color: "#666666" }}
               >
-                Modalidade do trabalho
+                {props.workplaceType}
               </Typography>
             </Box>
             <Typography
               id="transition-modal-title"
               style={{ fontSize: 24, fontWeight: 400, marginTop: 20 }}
             >
-              Contatos:
+              Contatos
             </Typography>
             <Box sx={{ border: 1, mt: 1, padding: 2, color: "#666666" }}>
               <Typography
@@ -124,7 +124,7 @@ const SeeMore:  React.FC<IOpportunity> = (props: IOpportunity) =>  {
               <Typography
                 style={{ fontSize: 18, fontWeight: 400, color: "#666666" }}
               >
-                Santa Maria/Brasil
+                Santa Maria/Brasil....
               </Typography>
             </Box>
           </Box>
