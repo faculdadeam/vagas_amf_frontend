@@ -15,14 +15,12 @@ import Title from "../../components/Title";
 import { getOpportunities } from "../../hooks/opportunities";
 import IOpportunity from "../../interfaces/IOpportunity";
 import { Colors } from "../../utils/colors";
-import SeeMore from "../../components/SeeMore";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
 import EditIcon from "@mui/icons-material/Edit";
 import AddIcon from "@mui/icons-material/Add";
 import Dialog from "@mui/material/Dialog";
 import { ContentCopy } from "@mui/icons-material";
-import SeeMore from "../../components/SeeMore";
 
 const Home: React.FC = () => {
   const [opportunities, setOpportunities] = useState<IOpportunity[]>([]);
